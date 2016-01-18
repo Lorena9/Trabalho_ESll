@@ -5,7 +5,7 @@
  */
 package trabalho_es;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -18,6 +18,43 @@ public class Usuario {
    private String endereco;
    private String telefone;
    private String cpf;
-   private Date dt_nascimento;
+   private LocalDate dt_nascimento;
+   
+   public Usuario(String login, String senha, String nome, String cpf, LocalDate dt_nascimento){
+	   
+	   this.login = login;
+	   this.senha = senha;
+	   this.nome = nome;
+	   this.cpf = cpf;
+	   this.dt_nascimento = dt_nascimento;
+	   endereco = null;
+	   telefone = null;
+	   
+   }
+	
+	public String getSenha() {
+		return senha;
+	}
+	
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	
+	public String getEndereco() {
+		return endereco;
+	}
+	
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+	
+	public String getTelefone() {
+		return telefone;
+	}
+	
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+}
+   
    
 }
