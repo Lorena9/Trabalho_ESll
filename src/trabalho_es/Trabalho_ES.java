@@ -5,6 +5,9 @@
  */
 package trabalho_es;
 
+import interfacegrafica.Login;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Lorena
@@ -16,6 +19,12 @@ public class Trabalho_ES {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        Login lg = new Login();
+        lg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        lg.setSize(400, 300);
+        lg.setResizable(false);
+        lg.setVisible(true);
     }
     
 }
