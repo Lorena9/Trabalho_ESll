@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package trabalho_es;
+package modelos;
 
 /**
  *
@@ -15,11 +15,11 @@ public class Conta {
    private String agencia;
    private Usuario usuario;
    
-   public Conta(String numero, String agencia, Usuario usuario){
+   public Conta(String numero, String agencia, Usuario usuario, double saldo){
 	   this.numero = numero;
 	   this.agencia = agencia;
 	   this.usuario = usuario;
-	   saldo = 0.0;
+	   this.saldo = saldo;
    }
 
 	public double getSaldo() {
@@ -37,6 +37,14 @@ public class Conta {
 	public String getAgencia() {
 		return agencia;
 	}
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 	   
 	   
 }

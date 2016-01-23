@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package trabalho_es;
+package modelos;
 
 /**
  *
  * @author T
  */
-public class Investimento {
+public class Extrato {
+    private String tipo;
+    private double valor;
+    private int conta;
+    private String usuario;
     
 }

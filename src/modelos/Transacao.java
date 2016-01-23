@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package trabalho_es;
+package modelos;
+
+import java.util.Date;
 
 /**
  *
  * @author T
  */
-public class Deposito {
-    private String tipoConta;
-    private String tipoDeposito;
+public class Transacao {
+    private Date data;
+    private double valor;
 }

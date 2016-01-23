@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package trabalho_es;
+package modelos;
 
 /**
  *
  * @author T
  */
-public class Resgate {
-    private String tipo;
+public class Aplicacao {
+    private String tipoInvestimento;
 }

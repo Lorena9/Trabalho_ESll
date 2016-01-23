@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package trabalho_es;
+package modelos;
 
 /**
  *
  * @author T
  */
-public class Poupanca {
-    private double saldo;
+public class Investimento {
+    
 }

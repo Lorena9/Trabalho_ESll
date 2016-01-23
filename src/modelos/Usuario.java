@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package trabalho_es;
+package modelos;
 
 import java.time.LocalDate;
 
@@ -12,6 +12,38 @@ import java.time.LocalDate;
  * @author T
  */
 public class Usuario {
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public LocalDate getDt_nascimento() {
+        return dt_nascimento;
+    }
+
+    public void setDt_nascimento(LocalDate dt_nascimento) {
+        this.dt_nascimento = dt_nascimento;
+    }
    private String login;
    private String senha;
    private String nome;

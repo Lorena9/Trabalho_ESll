@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package trabalho_es;
+package modelos;
 
 /**
  *
  * @author T
  */
-public class Transferencia {
-    private String contaOrigem;
-    private String contaDestino;
+public class Resgate {
+    private String tipo;
 }

@@ -5,8 +5,8 @@
  */
 package interfacegrafica;
 
+import basededados.BancoDeDadosEmMemoria;
 import javax.swing.JOptionPane;
-import static sun.security.jgss.GSSUtil.login;
 
 /**
  *
@@ -17,7 +17,9 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    BancoDeDadosEmMemoria bd;
     public Login() {
+        bd = new BancoDeDadosEmMemoria();
         initComponents();
     }
 
@@ -125,15 +127,16 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_loginActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-       
-         if(login.getText().equals("Usuario1") && (senha.getText().equals("123"))) { 
+       String numero = login.getText();
+       String pass = senha.getText();
+         if(bd.autenticar(numero, pass)) { 
              JOptionPane.showMessageDialog( null,"Acesso Permitido!");
-             new MenuPrincipal().setVisible (true);
+             new MenuPrincipal(numero).setVisible (true);
              this.dispose(); 
          } 
          else { 
              JOptionPane.showMessageDialog( null,"Acesso Negado!");
-         }﻿
+         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
