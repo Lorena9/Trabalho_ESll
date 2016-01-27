@@ -9,7 +9,7 @@ package modelos;
  *
  * @author T
  */
-public class Deposito {
+public class Deposito extends Transacao {
     private String tipoConta;
     private String tipoDeposito;
 }

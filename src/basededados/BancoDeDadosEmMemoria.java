@@ -25,7 +25,7 @@ public class BancoDeDadosEmMemoria {
         contas = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             Usuario u = new Usuario("Usuario" + i, "123456", "Usuario" + i, "12345678", LocalDate.now());
-            contas.add(new Conta("" + i, "123", u, Math.random()*(Math.random()*100)));
+            contas.add(new Conta("" + i, "123", u, 12345));
         }
     }
 

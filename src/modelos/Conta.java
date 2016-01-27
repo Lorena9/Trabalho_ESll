@@ -10,33 +10,33 @@ package modelos;
  * @author T
  */
 public class Conta {
-   private double saldo;
+   private int saldo;
    private String numero;
    private String agencia;
    private Usuario usuario;
    
-   public Conta(String numero, String agencia, Usuario usuario, double saldo){
+   public Conta(String numero, String agencia, Usuario usuario, int saldo){
 	   this.numero = numero;
 	   this.agencia = agencia;
 	   this.usuario = usuario;
 	   this.saldo = saldo;
    }
 
-	public double getSaldo() {
-		return saldo;
-	}
+    public double getSaldo() {
+	return saldo;
+    }
 	
-	public void setSaldo(double saldo) {
-		this.saldo = saldo;
-	}
+    public void setSaldo(int saldo) {
+	this.saldo = saldo;
+    }
 	
-	public String getNumero() {
-		return numero;
-	}
+    public String getNumero() {
+	return numero;
+    }
 	
-	public String getAgencia() {
-		return agencia;
-	}
+    public String getAgencia() {
+	return agencia;
+    }
 
     public Usuario getUsuario() {
         return usuario;

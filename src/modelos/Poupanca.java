@@ -9,6 +9,6 @@ package modelos;
  *
  * @author T
  */
-public class Poupanca {
-    private double saldo;
+public class Poupanca extends Investimento {
+    private int saldo;
 }
