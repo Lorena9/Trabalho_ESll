@@ -9,6 +9,6 @@ package modelos;
  *
  * @author carlosoliv
  */
-public class Stuff {
+public class Stuff extends Transacao {
     
 }
