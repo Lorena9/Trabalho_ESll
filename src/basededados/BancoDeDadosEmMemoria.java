@@ -27,6 +27,7 @@ public class BancoDeDadosEmMemoria {
 //        contas = new ArrayList<>();
         agencia = new Agencia();
 
+
     }
 
     public boolean autenticar(String numAgencia, String numConta, String senha) {
