@@ -11,15 +11,11 @@ package modelos;
  */
 public class Conta {
    private int saldo;
-   private String numero;
-   private String agencia;
-   private Usuario usuario;
+   private String numConta;
    
-   public Conta(String numero, String agencia, Usuario usuario, int saldo){
-	   this.numero = numero;
-	   this.agencia = agencia;
-	   this.usuario = usuario;
-	   this.saldo = saldo;
+   public Conta(String numConta, int saldo){
+       this.numConta = numConta;
+       this.saldo = saldo;
    }
 
     public double getSaldo() {
@@ -31,20 +27,6 @@ public class Conta {
     }
 	
     public String getNumero() {
-	return numero;
+	return numConta;
     }
-	
-    public String getAgencia() {
-	return agencia;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-	   
-	   
 }

@@ -5,21 +5,28 @@
  */
 package modelos;
 
-import java.time.LocalDate;
-
-/**
- *
- * @author T
- */
 public class Usuario {
+    private Conta conta;
+    
+   private String senha;
+   private String nome;
+   private String endereco;
+   private String telefone;
+   private String cpf;
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
+   public Usuario(Conta conta, String senha, String nome, String cpf, String endereco){
+	   this.conta = conta;
+	   this.senha = senha;
+	   this.nome = nome;
+	   this.cpf = cpf;
+	   this.endereco = endereco;
+	   telefone = null;
+	   
+   }
+   
+   public Conta getConta() {
+       return conta;
+   }
 
     public String getNome() {
         return nome;
@@ -36,34 +43,7 @@ public class Usuario {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-
-    public LocalDate getDt_nascimento() {
-        return dt_nascimento;
-    }
-
-    public void setDt_nascimento(LocalDate dt_nascimento) {
-        this.dt_nascimento = dt_nascimento;
-    }
-   private String login;
-   private String senha;
-   private String nome;
-   private String endereco;
-   private String telefone;
-   private String cpf;
-   private LocalDate dt_nascimento;
-   
-   public Usuario(String login, String senha, String nome, String cpf, LocalDate dt_nascimento){
-	   
-	   this.login = login;
-	   this.senha = senha;
-	   this.nome = nome;
-	   this.cpf = cpf;
-	   this.dt_nascimento = dt_nascimento;
-	   endereco = null;
-	   telefone = null;
-	   
-   }
-	
+  	
 	public String getSenha() {
 		return senha;
 	}
@@ -87,6 +67,5 @@ public class Usuario {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-   
    
 }

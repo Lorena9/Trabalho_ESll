@@ -8,6 +8,7 @@ package basededados;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import modelos.Agencia;
 import modelos.Conta;
 import modelos.Usuario;
 
@@ -17,37 +18,25 @@ import modelos.Usuario;
  */
 public class BancoDeDadosEmMemoria {
 
-    List<Usuario> usuarios;
-    List<Conta> contas;
+    Agencia agencia;
+//    List<Usuario> usuarios;
+//    List<Conta> contas;
 
     public BancoDeDadosEmMemoria() {
-        usuarios = new ArrayList<>();
-        contas = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            Usuario u = new Usuario("Usuario" + i, "123456", "Usuario" + i, "12345678", LocalDate.now());
-            contas.add(new Conta("" + i, "123", u, 12345));
-        }
+//        usuarios = new ArrayList<>();
+//        contas = new ArrayList<>();
+        agencia = new Agencia();
+
     }
 
-    public boolean autenticar(String numeroConta, String senha) {
-        for (Conta c : contas) {
-            if (c.getNumero().equalsIgnoreCase(numeroConta)) {
-                Usuario u = c.getUsuario();
-                if (u.getSenha().equalsIgnoreCase(senha)) {
-                    return true;
-                }
-            }
-        }
+    public boolean autenticar(String numAgencia, String numConta, String senha) {
+        
+        Usuario u = agencia.getUsuario(numConta);
+
+        if (u.getSenha().equalsIgnoreCase(senha))
+            return true;
+
         return false;
-    }
-
-    public Conta recuperarConta(String numero) throws Exception {
-        for (Conta c : contas) {
-            if (c.getNumero().equalsIgnoreCase(numero)) {
-                return c;
-            }
-        }
-        throw new Exception("Conta não encontrada");
     }
 
 }

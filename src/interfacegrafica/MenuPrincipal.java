@@ -5,10 +5,10 @@
  */
 package interfacegrafica;
 
-import basededados.BancoDeDadosEmMemoria;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import modelos.Conta;
+import modelos.Atm;
+import modelos.Usuario;
 
 /**
  *
@@ -16,20 +16,14 @@ import modelos.Conta;
  */
 public class MenuPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MenuPrincipal
-     */
-    BancoDeDadosEmMemoria bd;
-    Conta cliente;
-    String nomeCliente;
-    public MenuPrincipal(String numero) {
-        bd = new BancoDeDadosEmMemoria();
-        try {
-            cliente = bd.recuperarConta(numero);
-            nomeCliente = cliente.getUsuario().getNome();
-        } catch (Exception ex) {
-            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    Atm atm;
+    Usuario usuarioLogado;
+    
+    public MenuPrincipal(Atm atm, String numConta) {
+        this.atm = atm;
+        usuarioLogado = atm.getAgencia().getUsuario(numConta);
+        System.out.println("Nome de usuario: "+ usuarioLogado.getNome());
+
         initComponents();
         
     }
@@ -88,7 +82,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jLabel1.setText("Bem-Vindo");
 
-        nomeUsuario.setText(nomeCliente);
+        nomeUsuario.setText(usuarioLogado.getNome());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -167,7 +161,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         // TODO add your handling code here:
-        new ExibeSaldo((float) cliente.getSaldo()).setVisible(true);
+        new ExibeSaldo((float) usuarioLogado.getConta().getSaldo()).setVisible(true);
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jToggleButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton8ActionPerformed
