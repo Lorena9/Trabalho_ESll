@@ -4,10 +4,6 @@
  * and open the template in the editor.
  */
 package modelos;
-
-import interfacegrafica.Login;
-import javax.swing.JFrame;
-
 /**
  *
  * @author Lorena
