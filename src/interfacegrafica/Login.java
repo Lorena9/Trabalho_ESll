@@ -2,6 +2,7 @@ package interfacegrafica;
 
 import modelos.Atm;
 import javax.swing.JOptionPane;
+import modelos.Usuario;
 
 /**
  *
@@ -136,9 +137,11 @@ public class Login extends javax.swing.JFrame {
        String agencia = agenciaForm.getText();
        String conta = this.contaForm.getText();
        String senha = senhaForm.getText();
-         if(atm.autenticar(agencia, conta, senha)) {
+
+       Usuario usuarioLogado = atm.autenticar(agencia, conta, senha);
+       if (usuarioLogado != null) {
              JOptionPane.showMessageDialog( null,"Acesso Permitido!");
-             new MenuPrincipal(atm, conta).setVisible (true);
+             new MenuPrincipal(atm, usuarioLogado).setVisible (true);
              this.dispose();
          } 
          else { 

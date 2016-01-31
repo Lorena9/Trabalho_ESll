@@ -5,8 +5,6 @@
  */
 package interfacegrafica;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import modelos.Atm;
 import modelos.Usuario;
 
@@ -19,10 +17,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     Atm atm;
     Usuario usuarioLogado;
     
-    public MenuPrincipal(Atm atm, String numConta) {
+    public MenuPrincipal(Atm atm, Usuario usuarioLogado) {
         this.atm = atm;
-        usuarioLogado = atm.getAgencia().getUsuario(numConta);
-        System.out.println("Nome de usuario: "+ usuarioLogado.getNome());
+        this.usuarioLogado = usuarioLogado;
 
         initComponents();
         

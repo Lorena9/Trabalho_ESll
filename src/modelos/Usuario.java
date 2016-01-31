@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modelos;
 
 public class Usuario {
-    private Conta conta;
-    
+   private Conta conta;
+
    private String senha;
    private String nome;
    private String endereco;
@@ -20,8 +16,7 @@ public class Usuario {
 	   this.nome = nome;
 	   this.cpf = cpf;
 	   this.endereco = endereco;
-	   telefone = null;
-	   
+	   this.telefone = null;
    }
    
    public Conta getConta() {
