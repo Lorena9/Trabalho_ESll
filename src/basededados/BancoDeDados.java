@@ -17,7 +17,7 @@ import modelos.Conta;
 public class BancoDeDados {
     private Connection conn = null;
     private Statement statement = null;
-    private PreparedStatement preparedStatement = null;
+    private PreparedStatement preparedStatement;
     private ResultSet resultSet = null;
 
     public BancoDeDados() {
@@ -34,7 +34,6 @@ public class BancoDeDados {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             this.conn = DriverManager.getConnection(url, username, password);
-            statement = conn.createStatement();
             
             System.out.println("Conectado no banco!");
         } catch (Exception e) {
@@ -52,12 +51,13 @@ public class BancoDeDados {
         int saldoBanco;
 
         try {
+            statement = conn.createStatement();
             resultSet = statement.executeQuery(
                     "SELECT * FROM usuario u INNER JOIN conta c ON u.numconta = c.numconta"
                     + " WHERE u.numconta='"+numConta+"' and u.numagencia = '"+numAgencia+"';");
             
-
             // Lendo os dados do banco
+            resultSet.next();
             senhaBanco = resultSet.getString("senha");
             numContaBanco = resultSet.getString("numconta");
             nomeBanco = resultSet.getString("nome");
