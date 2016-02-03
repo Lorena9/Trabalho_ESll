@@ -14,7 +14,7 @@ public class Conta {
        this.saldo = saldo;
    }
 
-    public double getSaldo() {
+    public int getSaldo() {
 	return saldo;
     }
 	
@@ -24,5 +24,11 @@ public class Conta {
 	
     public String getNumero() {
 	return numConta;
+    }
+
+    public String getSaldoString() {
+        String saldoFinal = "R$ "+ (saldo/100) + "," + (saldo - ((saldo/100)*100));
+
+        return saldoFinal;
     }
 }

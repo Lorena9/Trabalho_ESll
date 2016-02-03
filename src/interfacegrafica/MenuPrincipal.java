@@ -18,10 +18,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     Usuario usuarioLogado;
     
     public MenuPrincipal(Atm atm, Usuario usuarioLogado) {
+        initComponents();
         this.atm = atm;
         this.usuarioLogado = usuarioLogado;
+        mostraSaldo.setText(usuarioLogado.getConta().getSaldoString());
+        nomeUsuario.setText(usuarioLogado.getNome());
 
-        initComponents();
+
         
     }
 
@@ -35,150 +38,384 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jToggleButton1 = new javax.swing.JToggleButton();
-        jPanel1 = new javax.swing.JPanel();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
+        TelaPrincipal = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jToggleButton4 = new javax.swing.JToggleButton();
-        jToggleButton5 = new javax.swing.JToggleButton();
-        jToggleButton6 = new javax.swing.JToggleButton();
-        jToggleButton7 = new javax.swing.JToggleButton();
-        jToggleButton8 = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         nomeUsuario = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        TelaSaldo = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        mostraSaldo = new javax.swing.JLabel();
+        botaoVoltarSaldo = new javax.swing.JButton();
+        TelaExtrato = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        TelaSaque = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        mostraSaldo1 = new javax.swing.JLabel();
+        TelaDeposito = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        mostraSaldo2 = new javax.swing.JLabel();
+        TelaPagamentos = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        mostraSaldo3 = new javax.swing.JLabel();
+        TelaTransferencia = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
 
         jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jToggleButton2.setText("Saldo");
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
-            }
-        });
-
-        jToggleButton3.setText("Saque");
+        setTitle("ATM - ES II - Bem vindo!");
+        setLocationByPlatform(true);
+        setPreferredSize(new java.awt.Dimension(400, 305));
+        setResizable(false);
+        getContentPane().setLayout(new java.awt.CardLayout());
 
         jButton1.setText("Depósito");
 
-        jToggleButton4.setText("Pagamentos");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setText("Bem-Vindo");
 
-        jToggleButton5.setText("Cheques");
+        nomeUsuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        jToggleButton6.setText("Extrato");
-
-        jToggleButton7.setText("Transferência");
-
-        jToggleButton8.setText("Investimento");
-        jToggleButton8.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("Saldo");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton8ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Bem-Vindo");
+        jButton3.setText("Extrato");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
-        nomeUsuario.setText(usuarioLogado.getNome());
+        jButton4.setText("Saque");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jToggleButton3)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nomeUsuario))
-                            .addComponent(jToggleButton2))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jToggleButton6)
-                        .addGap(35, 35, 35))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jToggleButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jToggleButton4)
-                            .addComponent(jToggleButton8)
-                            .addComponent(jToggleButton7))
-                        .addGap(17, 17, 17))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(nomeUsuario))
-                .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton2)
-                    .addComponent(jToggleButton4))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton3)
-                    .addComponent(jToggleButton7))
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton8)
-                    .addComponent(jToggleButton5))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton6)
+        jButton5.setText("Pagamentos");
+
+        jButton6.setText("Transferência");
+
+        jButton7.setText("Investimento");
+
+        jButton8.setText("Cheques");
+
+        jButton9.setText("Logout");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout TelaPrincipalLayout = new javax.swing.GroupLayout(TelaPrincipal);
+        TelaPrincipal.setLayout(TelaPrincipalLayout);
+        TelaPrincipalLayout.setHorizontalGroup(
+            TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TelaPrincipalLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TelaPrincipalLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(nomeUsuario))
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4)
                     .addComponent(jButton1))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
+                .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TelaPrincipalLayout.createSequentialGroup()
+                        .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(33, 33, 33))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TelaPrincipalLayout.createSequentialGroup()
+                        .addComponent(jButton9)
+                        .addContainerGap())))
+        );
+        TelaPrincipalLayout.setVerticalGroup(
+            TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TelaPrincipalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(nomeUsuario))
+                    .addComponent(jButton9))
+                .addGap(30, 30, 30)
+                .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton5))
+                .addGap(31, 31, 31)
+                .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton6))
+                .addGap(28, 28, 28)
+                .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jButton7))
+                .addGap(27, 27, 27)
+                .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton8))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        getContentPane().add(TelaPrincipal, "card2");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel2.setText("Seu saldo é:");
+
+        mostraSaldo.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        mostraSaldo.setText("...");
+
+        botaoVoltarSaldo.setText("Voltar");
+        botaoVoltarSaldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoVoltarSaldoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout TelaSaldoLayout = new javax.swing.GroupLayout(TelaSaldo);
+        TelaSaldo.setLayout(TelaSaldoLayout);
+        TelaSaldoLayout.setHorizontalGroup(
+            TelaSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TelaSaldoLayout.createSequentialGroup()
+                .addGroup(TelaSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TelaSaldoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(TelaSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(mostraSaldo)
+                            .addComponent(jLabel2)))
+                    .addGroup(TelaSaldoLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(botaoVoltarSaldo)))
+                .addContainerGap(192, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        TelaSaldoLayout.setVerticalGroup(
+            TelaSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TelaSaldoLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel2)
+                .addGap(48, 48, 48)
+                .addComponent(mostraSaldo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                .addComponent(botaoVoltarSaldo)
+                .addGap(21, 21, 21))
         );
+
+        getContentPane().add(TelaSaldo, "card3");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel3.setText("Extrato completo");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        javax.swing.GroupLayout TelaExtratoLayout = new javax.swing.GroupLayout(TelaExtrato);
+        TelaExtrato.setLayout(TelaExtratoLayout);
+        TelaExtratoLayout.setHorizontalGroup(
+            TelaExtratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TelaExtratoLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(TelaExtratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(55, Short.MAX_VALUE))
+        );
+        TelaExtratoLayout.setVerticalGroup(
+            TelaExtratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TelaExtratoLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(TelaExtrato, "card3");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel4.setText("Seu saldo é:");
+
+        mostraSaldo1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        mostraSaldo1.setText("...");
+
+        javax.swing.GroupLayout TelaSaqueLayout = new javax.swing.GroupLayout(TelaSaque);
+        TelaSaque.setLayout(TelaSaqueLayout);
+        TelaSaqueLayout.setHorizontalGroup(
+            TelaSaqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TelaSaqueLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(TelaSaqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(mostraSaldo1)
+                    .addComponent(jLabel4))
+                .addContainerGap(192, Short.MAX_VALUE))
+        );
+        TelaSaqueLayout.setVerticalGroup(
+            TelaSaqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TelaSaqueLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel4)
+                .addGap(48, 48, 48)
+                .addComponent(mostraSaldo1)
+                .addContainerGap(152, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(TelaSaque, "card3");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel5.setText("Seu saldo é:");
+
+        mostraSaldo2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        mostraSaldo2.setText("...");
+
+        javax.swing.GroupLayout TelaDepositoLayout = new javax.swing.GroupLayout(TelaDeposito);
+        TelaDeposito.setLayout(TelaDepositoLayout);
+        TelaDepositoLayout.setHorizontalGroup(
+            TelaDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TelaDepositoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(TelaDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(mostraSaldo2)
+                    .addComponent(jLabel5))
+                .addContainerGap(192, Short.MAX_VALUE))
+        );
+        TelaDepositoLayout.setVerticalGroup(
+            TelaDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TelaDepositoLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel5)
+                .addGap(48, 48, 48)
+                .addComponent(mostraSaldo2)
+                .addContainerGap(152, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(TelaDeposito, "card3");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel6.setText("Seu saldo é:");
+
+        mostraSaldo3.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        mostraSaldo3.setText("...");
+
+        javax.swing.GroupLayout TelaPagamentosLayout = new javax.swing.GroupLayout(TelaPagamentos);
+        TelaPagamentos.setLayout(TelaPagamentosLayout);
+        TelaPagamentosLayout.setHorizontalGroup(
+            TelaPagamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TelaPagamentosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(TelaPagamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(mostraSaldo3)
+                    .addComponent(jLabel6))
+                .addContainerGap(192, Short.MAX_VALUE))
+        );
+        TelaPagamentosLayout.setVerticalGroup(
+            TelaPagamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TelaPagamentosLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel6)
+                .addGap(48, 48, 48)
+                .addComponent(mostraSaldo3)
+                .addContainerGap(152, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(TelaPagamentos, "card3");
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel7.setText("Seu saldo é:");
+
+        javax.swing.GroupLayout TelaTransferenciaLayout = new javax.swing.GroupLayout(TelaTransferencia);
+        TelaTransferencia.setLayout(TelaTransferenciaLayout);
+        TelaTransferenciaLayout.setHorizontalGroup(
+            TelaTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TelaTransferenciaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addContainerGap(192, Short.MAX_VALUE))
+        );
+        TelaTransferenciaLayout.setVerticalGroup(
+            TelaTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TelaTransferenciaLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel7)
+                .addContainerGap(244, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(TelaTransferencia, "card3");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
-        new ExibeSaldo((float) usuarioLogado.getConta().getSaldo()).setVisible(true);
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    private void botaoVoltarSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarSaldoActionPerformed
+        TelaSaldo.setVisible(false);
+        TelaPrincipal.setVisible(true);
+    }//GEN-LAST:event_botaoVoltarSaldoActionPerformed
 
-    private void jToggleButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton8ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        TelaSaldo.setVisible(true);
+        TelaPrincipal.setVisible(false);
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton8ActionPerformed
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        TelaPrincipal.setVisible(false);
+        usuarioLogado = null;
+        new Login().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton9ActionPerformed
 
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel TelaDeposito;
+    private javax.swing.JPanel TelaExtrato;
+    private javax.swing.JPanel TelaPagamentos;
+    private javax.swing.JPanel TelaPrincipal;
+    private javax.swing.JPanel TelaSaldo;
+    private javax.swing.JPanel TelaSaque;
+    private javax.swing.JPanel TelaTransferencia;
+    private javax.swing.JButton botaoVoltarSaldo;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
-    private javax.swing.JToggleButton jToggleButton5;
-    private javax.swing.JToggleButton jToggleButton6;
-    private javax.swing.JToggleButton jToggleButton7;
-    private javax.swing.JToggleButton jToggleButton8;
+    private javax.swing.JLabel mostraSaldo;
+    private javax.swing.JLabel mostraSaldo1;
+    private javax.swing.JLabel mostraSaldo2;
+    private javax.swing.JLabel mostraSaldo3;
     private javax.swing.JLabel nomeUsuario;
     // End of variables declaration//GEN-END:variables
 }
