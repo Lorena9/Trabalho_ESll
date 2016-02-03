@@ -3,7 +3,7 @@ package modelos;
 
 /**
  *
- * @author T
+ * @author Carlos
  */
 public class Conta {
    private int saldo;

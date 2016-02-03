@@ -58,6 +58,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jButton10 = new javax.swing.JButton();
         TelaSaque = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         mostraSaldo1 = new javax.swing.JLabel();
@@ -85,6 +86,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel1.setText("Bem-Vindo");
 
         nomeUsuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        nomeUsuario.setText("...");
 
         jButton2.setText("Saldo");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -127,12 +129,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addGroup(TelaPrincipalLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(nomeUsuario))
+                        .addComponent(nomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(jButton4)
                     .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TelaPrincipalLayout.createSequentialGroup()
                         .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -152,7 +154,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(nomeUsuario))
+                        .addComponent(nomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton9))
                 .addGap(30, 30, 30)
                 .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -175,10 +177,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(TelaPrincipal, "card2");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Seu saldo é:");
 
-        mostraSaldo.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        mostraSaldo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         mostraSaldo.setText("...");
 
         botaoVoltarSaldo.setText("Voltar");
@@ -202,7 +204,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addGroup(TelaSaldoLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(botaoVoltarSaldo)))
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(314, Short.MAX_VALUE))
         );
         TelaSaldoLayout.setVerticalGroup(
             TelaSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,19 +213,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(48, 48, 48)
                 .addComponent(mostraSaldo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
                 .addComponent(botaoVoltarSaldo)
                 .addGap(21, 21, 21))
         );
 
         getContentPane().add(TelaSaldo, "card3");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Extrato completo");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
+
+        jButton10.setText("Voltar");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout TelaExtratoLayout = new javax.swing.GroupLayout(TelaExtrato);
         TelaExtrato.setLayout(TelaExtratoLayout);
@@ -232,6 +241,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(TelaExtratoLayout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addGroup(TelaExtratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton10)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(55, Short.MAX_VALUE))
@@ -241,9 +251,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(TelaExtratoLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton10)
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         getContentPane().add(TelaExtrato, "card3");
@@ -372,7 +384,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        TelaPrincipal.setVisible(false);
+        TelaExtrato.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -381,6 +394,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         new Login().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        TelaExtrato.setVisible(false);
+        TelaPrincipal.setVisible(true);
+    }//GEN-LAST:event_jButton10ActionPerformed
 
  
 
@@ -394,6 +412,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel TelaTransferencia;
     private javax.swing.JButton botaoVoltarSaldo;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
