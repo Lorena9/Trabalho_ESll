@@ -5,13 +5,29 @@
  */
 package modelos;
 
-import java.util.Date;
+import java.time.LocalTime;
 
 /**
  *
  * @author T
  */
 public class Transacao {
-    private Date data;
-    private double valor;
+    private Conta conta;
+    private LocalTime data;
+    private int valor; //obs: valor em centavos de real! Considerar duas casas decimais!
+    
+    public Transacao(int valor, Conta conta){
+        this.conta = conta;
+        this.valor = valor;
+        data = LocalTime.now();
+    }
+    
+    public int getValor(){
+        return valor;
+    }
+    
+    public LocalTime getData(){
+        return data;
+    }
+    
 }

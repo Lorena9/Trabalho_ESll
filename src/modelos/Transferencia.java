@@ -12,4 +12,8 @@ package modelos;
 public class Transferencia extends Transacao {
     private String contaOrigem;
     private String contaDestino;
+    
+    public Transferencia(int valor, Conta conta){
+        super(valor, conta);
+    }
 }

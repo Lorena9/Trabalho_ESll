@@ -18,8 +18,12 @@ public class Conta {
 	return saldo;
     }
 	
-    public void setSaldo(int saldo) {
+    private void setSaldo(int saldo) {
 	this.saldo = saldo;
+    }
+    
+    public void updateSaldo(int valor){
+        setSaldo(saldo+valor);
     }
 	
     public String getNumero() {

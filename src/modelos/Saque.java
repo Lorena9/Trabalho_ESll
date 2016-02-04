@@ -5,10 +5,17 @@
  */
 package modelos;
 
+import java.time.LocalTime;
+
 /**
  *
  * @author T
  */
 public class Saque extends Transacao {
+    
+    public Saque(int valor, Conta conta){
+        super((-1)*valor, conta); // valor vira negativo pois é uma retirada de dinheiro
+        
+    }
     
 }
