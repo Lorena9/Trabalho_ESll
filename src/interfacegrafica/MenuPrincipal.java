@@ -60,16 +60,48 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jButton10 = new javax.swing.JButton();
         TelaSaque = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        mostraSaldo1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         TelaDeposito = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        mostraSaldo2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jButton7 = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jCheckBox4 = new javax.swing.JCheckBox();
+        jButton8 = new javax.swing.JButton();
         TelaPagamentos = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        mostraSaldo3 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
         TelaTransferencia = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jButton6 = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jLabel11 = new javax.swing.JLabel();
+        TelaInvestimento = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jButton9 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        TelaCheque = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        jButton12 = new javax.swing.JButton();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -81,6 +113,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.CardLayout());
 
         botaoDeposito.setText("Depósito");
+        botaoDeposito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoDepositoActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Bem-Vindo");
@@ -103,8 +140,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         botaoSaque.setText("Saque");
+        botaoSaque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoSaqueActionPerformed(evt);
+            }
+        });
 
         botaoPagamentos.setText("Pagamentos");
+        botaoPagamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoPagamentosActionPerformed(evt);
+            }
+        });
 
         botaoTransferencias.setText("Transferência");
         botaoTransferencias.addActionListener(new java.awt.event.ActionListener() {
@@ -114,8 +161,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         botaoInvestimentos.setText("Investimento");
+        botaoInvestimentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoInvestimentosActionPerformed(evt);
+            }
+        });
 
-        botaoCheques.setText("Cheques");
+        botaoCheques.setText("Cheque");
+        botaoCheques.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoChequesActionPerformed(evt);
+            }
+        });
 
         botaoLogout.setText("Logout");
         botaoLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -139,29 +196,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(botaoExtrato)
                     .addComponent(botaoSaque)
                     .addComponent(botaoDeposito))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TelaPrincipalLayout.createSequentialGroup()
-                        .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botaoTransferencias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botaoPagamentos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botaoInvestimentos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botaoCheques, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(33, 33, 33))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TelaPrincipalLayout.createSequentialGroup()
-                        .addComponent(botaoLogout)
-                        .addContainerGap())))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(botaoTransferencias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botaoPagamentos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botaoInvestimentos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botaoCheques, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(TelaPrincipalLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(botaoLogout)))
+                .addGap(33, 33, 33))
         );
         TelaPrincipalLayout.setVerticalGroup(
             TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TelaPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(nomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(nomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoLogout))
-                .addGap(30, 30, 30)
+                .addGap(33, 33, 33)
                 .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoSaldo)
                     .addComponent(botaoPagamentos))
@@ -177,7 +231,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoDeposito)
                     .addComponent(botaoCheques))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         getContentPane().add(TelaPrincipal, "card2");
@@ -209,7 +263,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addGroup(TelaSaldoLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(botaoVoltarSaldo)))
-                .addContainerGap(316, Short.MAX_VALUE))
+                .addContainerGap(336, Short.MAX_VALUE))
         );
         TelaSaldoLayout.setVerticalGroup(
             TelaSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,114 +319,416 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(TelaExtrato, "card3");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel4.setText("Seu saldo é:");
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setText("Informe o valor a ser sacado:");
 
-        mostraSaldo1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        mostraSaldo1.setText("...");
+        jButton1.setText("Sacar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setText("Saque");
+
+        jButton2.setText("Voltar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(165, 165, 165))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(182, 182, 182)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton2)))
+                .addContainerGap(113, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addGap(50, 50, 50)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(19, 19, 19))
+        );
 
         javax.swing.GroupLayout TelaSaqueLayout = new javax.swing.GroupLayout(TelaSaque);
         TelaSaque.setLayout(TelaSaqueLayout);
         TelaSaqueLayout.setHorizontalGroup(
             TelaSaqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TelaSaqueLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(TelaSaqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(mostraSaldo1)
-                    .addComponent(jLabel4))
-                .addContainerGap(218, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         TelaSaqueLayout.setVerticalGroup(
             TelaSaqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TelaSaqueLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel4)
-                .addGap(48, 48, 48)
-                .addComponent(mostraSaldo1)
-                .addContainerGap(152, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         getContentPane().add(TelaSaque, "card3");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel5.setText("Seu saldo é:");
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel13.setText("Depósito");
 
-        mostraSaldo2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        mostraSaldo2.setText("...");
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel14.setText("N° da Conta:");
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel15.setText("Agência:");
+
+        jButton7.setText("Depositar");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel16.setText("Tipo de Conta:");
+
+        jCheckBox3.setText("Poupança");
+
+        jCheckBox4.setText("Corrente");
+        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox4ActionPerformed(evt);
+            }
+        });
+
+        jButton8.setText("Voltar");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addGap(18, 18, 18)
+                        .addComponent(jCheckBox3)
+                        .addGap(29, 29, 29)
+                        .addComponent(jCheckBox4)
+                        .addGap(110, 110, 110))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton8))
+                        .addGap(208, 208, 208))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addGap(163, 163, 163))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jButton7)
+                        .addGap(162, 162, 162))))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel13)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox3)
+                    .addComponent(jCheckBox4)
+                    .addComponent(jLabel16))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(jButton7)
+                .addGap(18, 18, 18)
+                .addComponent(jButton8)
+                .addContainerGap(73, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout TelaDepositoLayout = new javax.swing.GroupLayout(TelaDeposito);
         TelaDeposito.setLayout(TelaDepositoLayout);
         TelaDepositoLayout.setHorizontalGroup(
             TelaDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TelaDepositoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(TelaDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(mostraSaldo2)
-                    .addComponent(jLabel5))
-                .addContainerGap(218, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         TelaDepositoLayout.setVerticalGroup(
             TelaDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TelaDepositoLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel5)
-                .addGap(48, 48, 48)
-                .addComponent(mostraSaldo2)
-                .addContainerGap(152, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         getContentPane().add(TelaDeposito, "card3");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel6.setText("Seu saldo é:");
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setText("Pagamento");
 
-        mostraSaldo3.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        mostraSaldo3.setText("...");
+        jButton3.setText("Pagar");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setText("Código:");
+
+        jButton4.setText("Voltar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout TelaPagamentosLayout = new javax.swing.GroupLayout(TelaPagamentos);
         TelaPagamentos.setLayout(TelaPagamentosLayout);
         TelaPagamentosLayout.setHorizontalGroup(
             TelaPagamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TelaPagamentosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(175, 175, 175))
             .addGroup(TelaPagamentosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(TelaPagamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(mostraSaldo3)
-                    .addComponent(jLabel6))
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addGap(174, 174, 174)
+                .addComponent(jLabel5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TelaPagamentosLayout.createSequentialGroup()
+                .addGap(0, 25, Short.MAX_VALUE)
+                .addGroup(TelaPagamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton4)
+                    .addGroup(TelaPagamentosLayout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(34, 34, 34))
         );
         TelaPagamentosLayout.setVerticalGroup(
             TelaPagamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TelaPagamentosLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel6)
-                .addGap(48, 48, 48)
-                .addComponent(mostraSaldo3)
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addGap(49, 49, 49)
+                .addGroup(TelaPagamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(98, 98, 98)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(jButton4)
+                .addGap(32, 32, 32))
         );
 
         getContentPane().add(TelaPagamentos, "card3");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel7.setText("Seu saldo é:");
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel7.setText("Transferência");
+
+        jButton5.setText("Transferir");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel9.setText("N° da Conta:");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel10.setText("Agência:");
+
+        jButton6.setText("Voltar");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox1.setText("Poupança");
+
+        jCheckBox2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox2.setText("Corrente");
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel11.setText("Tipo de Conta:");
 
         javax.swing.GroupLayout TelaTransferenciaLayout = new javax.swing.GroupLayout(TelaTransferencia);
         TelaTransferencia.setLayout(TelaTransferenciaLayout);
         TelaTransferenciaLayout.setHorizontalGroup(
             TelaTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TelaTransferenciaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7)
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addGroup(TelaTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TelaTransferenciaLayout.createSequentialGroup()
+                        .addGap(174, 174, 174)
+                        .addComponent(jButton5))
+                    .addGroup(TelaTransferenciaLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(TelaTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(TelaTransferenciaLayout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(TelaTransferenciaLayout.createSequentialGroup()
+                                .addGroup(TelaTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, TelaTransferenciaLayout.createSequentialGroup()
+                                        .addComponent(jLabel11)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jCheckBox1))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, TelaTransferenciaLayout.createSequentialGroup()
+                                        .addComponent(jLabel10)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addComponent(jCheckBox2))))
+                    .addGroup(TelaTransferenciaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton6))
+                    .addGroup(TelaTransferenciaLayout.createSequentialGroup()
+                        .addGap(143, 143, 143)
+                        .addComponent(jLabel7)))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         TelaTransferenciaLayout.setVerticalGroup(
             TelaTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TelaTransferenciaLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addContainerGap()
                 .addComponent(jLabel7)
-                .addContainerGap(244, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addGroup(TelaTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox1)
+                    .addComponent(jCheckBox2)
+                    .addComponent(jLabel11))
+                .addGap(18, 18, 18)
+                .addGroup(TelaTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(TelaTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(jButton5)
+                .addGap(18, 18, 18)
+                .addComponent(jButton6)
+                .addGap(55, 55, 55))
         );
 
         getContentPane().add(TelaTransferencia, "card3");
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel12.setText("Investimento");
+
+        jButton9.setText("Voltar");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
+        jButton11.setText("Investir");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout TelaInvestimentoLayout = new javax.swing.GroupLayout(TelaInvestimento);
+        TelaInvestimento.setLayout(TelaInvestimentoLayout);
+        TelaInvestimentoLayout.setHorizontalGroup(
+            TelaInvestimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TelaInvestimentoLayout.createSequentialGroup()
+                .addGroup(TelaInvestimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TelaInvestimentoLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton9))
+                    .addGroup(TelaInvestimentoLayout.createSequentialGroup()
+                        .addGap(173, 173, 173)
+                        .addGroup(TelaInvestimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton11)
+                            .addComponent(jLabel12))))
+                .addContainerGap(154, Short.MAX_VALUE))
+        );
+        TelaInvestimentoLayout.setVerticalGroup(
+            TelaInvestimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TelaInvestimentoLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                .addComponent(jButton11)
+                .addGap(30, 30, 30)
+                .addComponent(jButton9)
+                .addGap(54, 54, 54))
+        );
+
+        getContentPane().add(TelaInvestimento, "card9");
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel17.setText("Cheque");
+
+        jButton12.setText("Voltar");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout TelaChequeLayout = new javax.swing.GroupLayout(TelaCheque);
+        TelaCheque.setLayout(TelaChequeLayout);
+        TelaChequeLayout.setHorizontalGroup(
+            TelaChequeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TelaChequeLayout.createSequentialGroup()
+                .addGroup(TelaChequeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TelaChequeLayout.createSequentialGroup()
+                        .addGap(171, 171, 171)
+                        .addComponent(jLabel17))
+                    .addGroup(TelaChequeLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jButton12)))
+                .addContainerGap(180, Short.MAX_VALUE))
+        );
+        TelaChequeLayout.setVerticalGroup(
+            TelaChequeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TelaChequeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
+                .addComponent(jButton12)
+                .addGap(67, 67, 67))
+        );
+
+        getContentPane().add(TelaCheque, "card10");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -406,14 +762,92 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void botaoTransferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoTransferenciasActionPerformed
-        // TODO add your handling code here:
+        TelaTransferencia.setVisible(true);
+        TelaPrincipal.setVisible(false);
     }//GEN-LAST:event_botaoTransferenciasActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void botaoSaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSaqueActionPerformed
+           TelaSaque.setVisible(true);
+           TelaPrincipal.setVisible(false);
+    }//GEN-LAST:event_botaoSaqueActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+           TelaSaque.setVisible(false);
+           TelaPrincipal.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox4ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        TelaDeposito.setVisible(false);
+        TelaPrincipal.setVisible(true);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void botaoDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDepositoActionPerformed
+        TelaDeposito.setVisible(true);
+        TelaPrincipal.setVisible(false);
+    }//GEN-LAST:event_botaoDepositoActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        TelaPagamentos.setVisible(false);
+        TelaPrincipal.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void botaoPagamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPagamentosActionPerformed
+        TelaPagamentos.setVisible(true);
+        TelaPrincipal.setVisible(false);
+    }//GEN-LAST:event_botaoPagamentosActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        TelaTransferencia.setVisible(false);
+        TelaPrincipal.setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void botaoInvestimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInvestimentosActionPerformed
+        TelaInvestimento.setVisible(true);
+        TelaPrincipal.setVisible(false);
+    }//GEN-LAST:event_botaoInvestimentosActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        TelaInvestimento.setVisible(false);
+        TelaPrincipal.setVisible(true);
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void botaoChequesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoChequesActionPerformed
+        TelaCheque.setVisible(true);
+        TelaPrincipal.setVisible(false);
+    }//GEN-LAST:event_botaoChequesActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        TelaCheque.setVisible(false);
+        TelaPrincipal.setVisible(true);
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
 
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel TelaCheque;
     private javax.swing.JPanel TelaDeposito;
     private javax.swing.JPanel TelaExtrato;
+    private javax.swing.JPanel TelaInvestimento;
     private javax.swing.JPanel TelaPagamentos;
     private javax.swing.JPanel TelaPrincipal;
     private javax.swing.JPanel TelaSaldo;
@@ -429,21 +863,51 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton botaoSaque;
     private javax.swing.JButton botaoTransferencias;
     private javax.swing.JButton botaoVoltarSaldo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel mostraSaldo;
-    private javax.swing.JLabel mostraSaldo1;
-    private javax.swing.JLabel mostraSaldo2;
-    private javax.swing.JLabel mostraSaldo3;
     private javax.swing.JLabel nomeUsuario;
     // End of variables declaration//GEN-END:variables
 }
