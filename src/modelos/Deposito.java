@@ -10,8 +10,8 @@ package modelos;
  * @author T
  */
 public class Deposito extends Transacao {
-    private String tipoConta;
-    private String tipoDeposito;
+    //private String tipoConta;
+   // private String tipoDeposito;
       
     public Deposito(int valor, Conta conta){
         super(valor, conta);

@@ -5,6 +5,7 @@
  */
 package interfacegrafica;
 
+import javax.swing.JOptionPane;
 import modelos.Atm;
 import modelos.Usuario;
 
@@ -23,8 +24,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.usuarioLogado = usuarioLogado;
         mostraSaldo.setText(usuarioLogado.getConta().getSaldoString());
         nomeUsuario.setText(usuarioLogado.getNome());
-
-
         
     }
 
@@ -61,7 +60,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         TelaSaque = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        valor = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -319,6 +318,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(TelaExtrato, "card3");
 
+        valor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                valorActionPerformed(evt);
+            }
+        });
+
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Informe o valor a ser sacado:");
 
@@ -353,7 +358,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(182, 182, 182)
                         .addComponent(jLabel4))
@@ -370,7 +375,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(68, 68, 68)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
@@ -631,8 +636,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(jCheckBox2)
                     .addComponent(jLabel11))
                 .addGap(18, 18, 18)
-                .addGroup(TelaTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
+                .addGroup(TelaTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(TelaTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -767,7 +772,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoTransferenciasActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Valor sacado = " + valor);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void botaoSaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSaqueActionPerformed
@@ -841,6 +846,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void valorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_valorActionPerformed
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -900,7 +909,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -909,5 +917,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel mostraSaldo;
     private javax.swing.JLabel nomeUsuario;
+    private javax.swing.JTextField valor;
     // End of variables declaration//GEN-END:variables
 }

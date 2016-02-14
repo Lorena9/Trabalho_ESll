@@ -28,7 +28,7 @@ public class BancoDeDados {
         String url = "jdbc:mysql://localhost:3306/atm";
         String username = "root";
         //String password = "123456";
-        String password = "root";
+        String password = "uff1116";
 
         System.out.println("Conectando no banco...");
         
