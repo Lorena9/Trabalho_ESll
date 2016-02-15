@@ -1,6 +1,6 @@
 package modelos;
 
-import basededados.BancoDeDados;
+import basededados.dao.UsuarioDAO;
 
 /**
  *
@@ -8,19 +8,18 @@ import basededados.BancoDeDados;
  */
 public class Atm {
     private Agencia agencia;
-    private BancoDeDados banco;
+    private UsuarioDAO userDAO;
     
     public Atm() {
         agencia = new Agencia();
-        banco = new BancoDeDados();
+        userDAO = new UsuarioDAO();
     }
     
     public Usuario autenticar(String numAgencia, String numConta, String senha) {
         Usuario usuarioLogado;
         String senhaBanco;
 
-        banco.conecta ();
-        usuarioLogado = banco.buscaUsuario (numConta, numAgencia);
+        usuarioLogado = userDAO.getUsuario (numConta, numAgencia);
         
         if (usuarioLogado != null) {
             senhaBanco = usuarioLogado.getSenha();

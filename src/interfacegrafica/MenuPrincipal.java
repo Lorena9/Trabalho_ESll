@@ -5,8 +5,14 @@
  */
 package interfacegrafica;
 
+import basededados.dao.ContaDAO;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelos.Atm;
+import modelos.Conta;
+import modelos.Saque;
 import modelos.Usuario;
 
 /**
@@ -17,14 +23,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     Atm atm;
     Usuario usuarioLogado;
-    
+
     public MenuPrincipal(Atm atm, Usuario usuarioLogado) {
         initComponents();
         this.atm = atm;
         this.usuarioLogado = usuarioLogado;
         mostraSaldo.setText(usuarioLogado.getConta().getSaldoString());
         nomeUsuario.setText(usuarioLogado.getNome());
-        
+
     }
 
     /**
@@ -60,9 +66,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         TelaSaque = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        valor = new javax.swing.JTextField();
+        valorSaque = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        sacarButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         TelaDeposito = new javax.swing.JPanel();
@@ -195,7 +201,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(botaoExtrato)
                     .addComponent(botaoSaque)
                     .addComponent(botaoDeposito))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(botaoTransferencias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(botaoPagamentos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -262,7 +268,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addGroup(TelaSaldoLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(botaoVoltarSaldo)))
-                .addContainerGap(336, Short.MAX_VALUE))
+                .addContainerGap(356, Short.MAX_VALUE))
         );
         TelaSaldoLayout.setVerticalGroup(
             TelaSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,7 +308,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(jButton10)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         TelaExtratoLayout.setVerticalGroup(
             TelaExtratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,19 +324,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(TelaExtrato, "card3");
 
-        valor.addActionListener(new java.awt.event.ActionListener() {
+        valorSaque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                valorActionPerformed(evt);
+                valorSaqueActionPerformed(evt);
             }
         });
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Informe o valor a ser sacado:");
 
-        jButton1.setText("Sacar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        sacarButton.setText("Sacar");
+        sacarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                sacarButtonActionPerformed(evt);
             }
         });
 
@@ -350,7 +356,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sacarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(165, 165, 165))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,14 +364,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(valorSaque, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(182, 182, 182)
                         .addComponent(jLabel4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton2)))
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,9 +381,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(valorSaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(68, 68, 68)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sacarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(19, 19, 19))
@@ -436,7 +442,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel16)
@@ -530,7 +536,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TelaPagamentosLayout.createSequentialGroup()
-                .addGap(0, 25, Short.MAX_VALUE)
+                .addGap(0, 55, Short.MAX_VALUE)
                 .addGroup(TelaPagamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton4)
                     .addGroup(TelaPagamentosLayout.createSequentialGroup()
@@ -623,7 +629,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addGroup(TelaTransferenciaLayout.createSequentialGroup()
                         .addGap(143, 143, 143)
                         .addComponent(jLabel7)))
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
         TelaTransferenciaLayout.setVerticalGroup(
             TelaTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -683,7 +689,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addGroup(TelaInvestimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton11)
                             .addComponent(jLabel12))))
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addContainerGap(181, Short.MAX_VALUE))
         );
         TelaInvestimentoLayout.setVerticalGroup(
             TelaInvestimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -721,7 +727,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addGroup(TelaChequeLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(jButton12)))
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(209, Short.MAX_VALUE))
         );
         TelaChequeLayout.setVerticalGroup(
             TelaChequeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -771,18 +777,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
         TelaPrincipal.setVisible(false);
     }//GEN-LAST:event_botaoTransferenciasActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JOptionPane.showMessageDialog(null, "Valor sacado = " + valor);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void sacarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sacarButtonActionPerformed
+        try {
+            Conta nova = new Saque(Integer.parseInt(valorSaque.getText()) * 100, usuarioLogado.getConta()).sacar();
+            new ContaDAO().atualizaConta(nova);
+            mostraSaldo.setText(usuarioLogado.getConta().getSaldoString());
+            JOptionPane.showMessageDialog(null, "Valor sacado = " + valorSaque.getText());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Não foi possível realizar a operação!\nTente novamente mais tarde!");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Saldo insuficiente!");
+        }
+    }//GEN-LAST:event_sacarButtonActionPerformed
 
     private void botaoSaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSaqueActionPerformed
-           TelaSaque.setVisible(true);
-           TelaPrincipal.setVisible(false);
+        TelaSaque.setVisible(true);
+        TelaPrincipal.setVisible(false);
     }//GEN-LAST:event_botaoSaqueActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-           TelaSaque.setVisible(false);
-           TelaPrincipal.setVisible(true);
+        TelaSaque.setVisible(false);
+        TelaPrincipal.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
@@ -846,11 +861,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void valorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorActionPerformed
+    private void valorSaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorSaqueActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_valorActionPerformed
+    }//GEN-LAST:event_valorSaqueActionPerformed
 
- 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel TelaCheque;
@@ -872,7 +886,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton botaoSaque;
     private javax.swing.JButton botaoTransferencias;
     private javax.swing.JButton botaoVoltarSaldo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
@@ -917,6 +930,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel mostraSaldo;
     private javax.swing.JLabel nomeUsuario;
-    private javax.swing.JTextField valor;
+    private javax.swing.JButton sacarButton;
+    private javax.swing.JTextField valorSaque;
     // End of variables declaration//GEN-END:variables
 }

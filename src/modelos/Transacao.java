@@ -29,5 +29,9 @@ public class Transacao {
     public LocalTime getData(){
         return data;
     }
+
+    public Conta getConta() {
+        return conta;
+    }
     
 }
