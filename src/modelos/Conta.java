@@ -13,12 +13,12 @@ import java.sql.SQLException;
 public class Conta {
    private int saldo;
    private String numero;
-   private ArrayList<Transacao> extrato;
+   private ArrayList<Transacao> transacoesMes;
    
    public Conta(String numConta, int saldo) throws SQLException{
        this.numero = numConta;
        this.saldo = saldo;
-       extrato = new TransacaoDAO().geraExtratoInicial(this);
+       transacoesMes = new TransacaoDAO().getExtratoInicial(this);
    }
 
     public int getSaldo() {
