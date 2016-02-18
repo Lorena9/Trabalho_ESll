@@ -7,12 +7,19 @@ import basededados.dao.UsuarioDAO;
  * @author Carlos
  */
 public class Atm {
-    private Agencia agencia;
-    private UsuarioDAO userDAO;
+    private final Agencia agencia;
+    private final UsuarioDAO userDAO;
+    private final Deposito deposito;
     
     public Atm() {
         agencia = new Agencia();
         userDAO = new UsuarioDAO();
+        deposito = new Deposito();
+    }
+    
+    public boolean executaDeposito(String agencia, String conta, int valor) {
+        return deposito.deposita(agencia, conta, valor);
+        
     }
     
     public Usuario autenticar(String numAgencia, String numConta, String senha) {
