@@ -11,10 +11,6 @@ package exceptions;
  */
 public class TransacaoException extends Exception{
     
-    public TransacaoException(){
-        
-    }
-    
     public TransacaoException(String message){
         super(message);
     }

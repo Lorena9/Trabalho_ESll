@@ -12,10 +12,6 @@ package exceptions;
 public class SaldoInsuficienteException extends TransacaoException{
     
     public SaldoInsuficienteException(){
-        
-    }
-    
-    public SaldoInsuficienteException(String message){
-        super(message);
+        super("Saldo Insuficiente.");
     }
 }
