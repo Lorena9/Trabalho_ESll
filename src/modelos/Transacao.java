@@ -5,7 +5,7 @@
  */
 package modelos;
 
-import java.time.LocalTime;
+import java.util.Date;
 
 /**
  *
@@ -13,20 +13,26 @@ import java.time.LocalTime;
  */
 public class Transacao {
     private Conta conta;
-    private LocalTime data;
+    private Date data;
     private int valor; //obs: valor em centavos de real! Considerar duas casas decimais!
     
     public Transacao(int valor, Conta conta){
         this.conta = conta;
         this.valor = valor;
-        data = LocalTime.now();
+        data = new Date();
+    }
+    
+    public Transacao(Date data, int valor, Conta conta){
+        this.conta = conta;
+        this.valor = valor;
+        this.data = data;
     }
     
     public int getValor(){
         return valor;
     }
     
-    public LocalTime getData(){
+    public Date getData(){
         return data;
     }
 
