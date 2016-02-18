@@ -14,4 +14,5 @@ public class SaldoInsuficienteException extends TransacaoException{
     public SaldoInsuficienteException(){
         super("Saldo Insuficiente.");
     }
+
 }
