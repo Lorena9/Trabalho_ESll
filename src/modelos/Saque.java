@@ -18,7 +18,7 @@ public class Saque extends Transacao {
     }
 
     public Conta sacar() throws SaldoInsuficienteException {
-        if (getValor() < getConta().getSaldo()) {
+        if ((getValor() + getConta().getSaldo()) >= 0) {
             getConta().updateSaldo(getValor());
         } else {
             throw new SaldoInsuficienteException();
