@@ -16,7 +16,7 @@ public class Agencia {
     public String numAgencia = "29076";
     public List<Usuario> usuarios;
     
-    public Agencia () {
+    public Agencia (){
         usuarios = new ArrayList<>();
 
         for (int i = 0; i < 5; i++) {

@@ -40,4 +40,9 @@ public class Transacao {
         return conta;
     }
     
+    @Override
+    public String toString(){
+        return data.toString()+ "  "+valor;
+    }
+    
 }

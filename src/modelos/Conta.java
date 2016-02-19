@@ -15,11 +15,15 @@ public class Conta {
    private String numero;
    private ArrayList<Transacao> transacoesMes;
    
-   public Conta(String numConta, int saldo) throws SQLException{
+   public Conta(String numConta, int saldo) {
        this.numero = numConta;
        this.saldo = saldo;
-       transacoesMes = new TransacaoDAO().getExtratoInicial(this);
+       
    }
+   
+//   public void getExtratoMes() throws SQLException{
+//       transacoesMes = new TransacaoDAO().getExtratoInicial(this);
+//   }
 
     public int getSaldo() {
 	return saldo;
@@ -47,7 +51,7 @@ public class Conta {
         if((saldo - valor) >= 0){
             return new Saque(valor, this);
         }else{
-            throw new SaldoInsuficienteException("Saldo indisponível.");
+            throw new SaldoInsuficienteException();
         }
     }
 }

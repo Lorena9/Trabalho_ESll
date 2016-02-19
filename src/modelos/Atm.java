@@ -11,7 +11,7 @@ public class Atm {
     private final UsuarioDAO userDAO;
     private final Deposito deposito;
     
-    public Atm() {
+    public Atm(){
         agencia = new Agencia();
         userDAO = new UsuarioDAO();
         deposito = new Deposito();

@@ -6,13 +6,16 @@
 package interfacegrafica;
 
 import basededados.dao.ContaDAO;
+import basededados.dao.TransacaoDAO;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelos.Atm;
 import modelos.Conta;
 import modelos.Saque;
+import modelos.Transacao;
 import modelos.Usuario;
 
 /**
@@ -23,6 +26,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     Atm atm;
     Usuario usuarioLogado;
+    String transacoes;
 
     public MenuPrincipal(Atm atm, Usuario usuarioLogado) {
         initComponents();
@@ -43,6 +47,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jToggleButton1 = new javax.swing.JToggleButton();
+        jComboBox2 = new javax.swing.JComboBox<>();
         TelaPrincipal = new javax.swing.JPanel();
         botaoDeposito = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -62,8 +67,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
         TelaExtrato = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        textAreaExtratoInicial = new javax.swing.JTextArea();
         jButton10 = new javax.swing.JButton();
+        botaoExtratoPeriodo = new javax.swing.JButton();
+        TelaExtratoPeriodo = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jButton13 = new javax.swing.JButton();
+        botaoExtratoPeriodo1 = new javax.swing.JButton();
+        comboMesInicial = new javax.swing.JComboBox<>();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        comboAnoFinal = new javax.swing.JComboBox<>();
+        comboAnoInicial = new javax.swing.JComboBox<>();
+        comboMesFinal = new javax.swing.JComboBox<>();
         TelaSaque = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         valorSaque = new javax.swing.JTextField();
@@ -111,6 +129,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jButton12 = new javax.swing.JButton();
 
         jToggleButton1.setText("jToggleButton1");
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ATM - ES II - Bem vindo!");
@@ -286,16 +306,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().add(TelaSaldo, "card3");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setText("Extrato completo");
+        jLabel3.setText("Extrato do mês");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        textAreaExtratoInicial.setColumns(20);
+        textAreaExtratoInicial.setRows(5);
+        jScrollPane1.setViewportView(textAreaExtratoInicial);
 
         jButton10.setText("Voltar");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
+            }
+        });
+
+        botaoExtratoPeriodo.setText("Extrato por período");
+        botaoExtratoPeriodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoExtratoPeriodoActionPerformed(evt);
             }
         });
 
@@ -306,24 +333,123 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(TelaExtratoLayout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addGroup(TelaExtratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton10)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(TelaExtratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(TelaExtratoLayout.createSequentialGroup()
+                            .addComponent(jButton10)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botaoExtratoPeriodo))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(113, Short.MAX_VALUE))
         );
         TelaExtratoLayout.setVerticalGroup(
             TelaExtratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TelaExtratoLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton10)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addGroup(TelaExtratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton10)
+                    .addComponent(botaoExtratoPeriodo))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         getContentPane().add(TelaExtrato, "card3");
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel16.setText("Informe o período:");
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane2.setViewportView(jTextArea2);
+
+        jButton13.setText("Voltar");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+
+        botaoExtratoPeriodo1.setText("Gerar Extrato");
+        botaoExtratoPeriodo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoExtratoPeriodo1ActionPerformed(evt);
+            }
+        });
+
+        comboMesInicial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+        comboMesInicial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboMesInicialActionPerformed(evt);
+            }
+        });
+
+        jLabel20.setText("Mês inicial");
+
+        jLabel21.setText("Mês final");
+
+        comboAnoFinal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2016", "2015", "2014", "2013", "2012", "2011", "2010" }));
+
+        comboAnoInicial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2016", "2015", "2014", "2013", "2012", "2011", "2010" }));
+
+        comboMesFinal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+
+        javax.swing.GroupLayout TelaExtratoPeriodoLayout = new javax.swing.GroupLayout(TelaExtratoPeriodo);
+        TelaExtratoPeriodo.setLayout(TelaExtratoPeriodoLayout);
+        TelaExtratoPeriodoLayout.setHorizontalGroup(
+            TelaExtratoPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TelaExtratoPeriodoLayout.createSequentialGroup()
+                .addGroup(TelaExtratoPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botaoExtratoPeriodo1)
+                    .addGroup(TelaExtratoPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(TelaExtratoPeriodoLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(TelaExtratoPeriodoLayout.createSequentialGroup()
+                            .addGap(21, 21, 21)
+                            .addComponent(jLabel20)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(comboMesInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(comboAnoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel21)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(comboMesFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(comboAnoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(TelaExtratoPeriodoLayout.createSequentialGroup()
+                            .addGap(48, 48, 48)
+                            .addGroup(TelaExtratoPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton13)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        TelaExtratoPeriodoLayout.setVerticalGroup(
+            TelaExtratoPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TelaExtratoPeriodoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(TelaExtratoPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboMesInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel21)
+                    .addComponent(comboAnoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboAnoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboMesFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botaoExtratoPeriodo1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton13)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(TelaExtratoPeriodo, "card3");
 
         valorSaque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -489,7 +615,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(valorDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(depositarButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton8)
                 .addGap(46, 46, 46))
         );
@@ -782,7 +908,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void botaoExtratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExtratoActionPerformed
         TelaPrincipal.setVisible(false);
+        
+        try {
+            transacoes = new TransacaoDAO().getExtratoInicial(usuarioLogado.getConta());
+            System.out.println(transacoes);
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         TelaExtrato.setVisible(true);
+        textAreaExtratoInicial.setText(transacoes);
+        
     }//GEN-LAST:event_botaoExtratoActionPerformed
 
     private void botaoLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLogoutActionPerformed
@@ -906,11 +1042,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_valorDepositoActionPerformed
 
+    private void botaoExtratoPeriodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExtratoPeriodoActionPerformed
+        TelaExtrato.setVisible(false);
+        TelaExtratoPeriodo.setVisible(true);
+    }//GEN-LAST:event_botaoExtratoPeriodoActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void botaoExtratoPeriodo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExtratoPeriodo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoExtratoPeriodo1ActionPerformed
+
+    private void comboMesInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboMesInicialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboMesInicialActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel TelaCheque;
     private javax.swing.JPanel TelaDeposito;
     private javax.swing.JPanel TelaExtrato;
+    private javax.swing.JPanel TelaExtratoPeriodo;
     private javax.swing.JPanel TelaInvestimento;
     private javax.swing.JPanel TelaPagamentos;
     private javax.swing.JPanel TelaPrincipal;
@@ -920,6 +1074,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton botaoCheques;
     private javax.swing.JButton botaoDeposito;
     private javax.swing.JButton botaoExtrato;
+    private javax.swing.JButton botaoExtratoPeriodo;
+    private javax.swing.JButton botaoExtratoPeriodo1;
     private javax.swing.JButton botaoInvestimentos;
     private javax.swing.JButton botaoLogout;
     private javax.swing.JButton botaoPagamentos;
@@ -928,10 +1084,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton botaoTransferencias;
     private javax.swing.JButton botaoVoltarSaldo;
     private javax.swing.JTextField codigoPagamento;
+    private javax.swing.JComboBox<String> comboAnoFinal;
+    private javax.swing.JComboBox<String> comboAnoInicial;
+    private javax.swing.JComboBox<String> comboMesFinal;
+    private javax.swing.JComboBox<String> comboMesInicial;
     private javax.swing.JButton depositarButton;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -940,6 +1101,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -947,10 +1109,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -961,7 +1126,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JToggleButton jToggleButton1;
@@ -971,6 +1137,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField numconta;
     private javax.swing.JButton pagar;
     private javax.swing.JButton sacarButton;
+    private javax.swing.JTextArea textAreaExtratoInicial;
     private javax.swing.JComboBox tipoPagamento;
     private javax.swing.JTextField valorDeposito;
     private javax.swing.JTextField valorPagamento;

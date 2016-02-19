@@ -28,8 +28,8 @@ public class TransacaoDAO {
         conn = BancoDeDados.getInstance();
     }
 
-    public ArrayList<Transacao> getExtratoInicial(Conta conta) throws SQLException  {
-        String geraExtratoMes = "SELECT * FROM atm.transacao WHERE month(dt_transacao) = month(now()) AND year(dt_transacao)=year(now());";
+    public String getExtratoInicial(Conta conta) throws SQLException  {
+        String geraExtratoMes = "SELECT * FROM atm.transacao WHERE month(`data`) = month(now()) AND year(`data`)=year(now());";
         PreparedStatement preparedStatement = conn.prepareStatement(geraExtratoMes);
         resultado = preparedStatement.executeQuery();
         
@@ -41,7 +41,7 @@ public class TransacaoDAO {
         int valor;
         
         while(resultado.next()){
-            dt_transacao  = resultado.getDate("dt_transacao");
+            dt_transacao  = resultado.getDate("data");
             valor = resultado.getInt("valor");
             
             temp = new Transacao(dt_transacao, valor, conta);
@@ -49,7 +49,13 @@ public class TransacaoDAO {
             extrato.add(temp);
         }
         
-        return extrato;
+        String extratoTexto = "";
+        
+        for(int i=0; i < extrato.size(); i++){
+            extratoTexto = extratoTexto + extrato.get(i).toString() + "\n";
+        }
+        
+        return extratoTexto;
     }
     
     public ArrayList<Transacao> getExtrato(Conta conta, Date dt_ini, Date dt_fim) throws SQLException{

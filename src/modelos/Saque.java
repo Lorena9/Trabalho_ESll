@@ -5,6 +5,8 @@
  */
 package modelos;
 
+import exceptions.SaldoInsuficienteException;
+
 /**
  *
  * @author T
@@ -15,12 +17,17 @@ public class Saque extends Transacao {
         super((-1) * valor, conta); // valor vira negativo pois é uma retirada de dinheiro
     }
 
-    public Conta sacar() throws Exception {
+    public Conta sacar() throws SaldoInsuficienteException {
         if (getValor() < getConta().getSaldo()) {
             getConta().updateSaldo(getValor());
         } else {
-            throw new Exception("Saldo insuficiente!");
+            throw new SaldoInsuficienteException();
         }
         return getConta();
+    }
+    
+    @Override
+    public String toString(){
+        return "SAQUE          "+getData().toString()+ "  "+getValor();
     }
 }
