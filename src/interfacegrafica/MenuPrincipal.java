@@ -74,7 +74,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
-        jButton13 = new javax.swing.JButton();
+        botaoVoltarExtratoPeriodo = new javax.swing.JButton();
         botaoExtratoPeriodo1 = new javax.swing.JButton();
         comboMesInicial = new javax.swing.JComboBox<>();
         jLabel20 = new javax.swing.JLabel();
@@ -365,10 +365,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
-        jButton13.setText("Voltar");
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
+        botaoVoltarExtratoPeriodo.setText("Voltar");
+        botaoVoltarExtratoPeriodo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
+                botaoVoltarExtratoPeriodoActionPerformed(evt);
             }
         });
 
@@ -424,7 +424,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                             .addGap(48, 48, 48)
                             .addGroup(TelaExtratoPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton13)))))
+                                .addComponent(botaoVoltarExtratoPeriodo)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         TelaExtratoPeriodoLayout.setVerticalGroup(
@@ -445,7 +445,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton13)
+                .addComponent(botaoVoltarExtratoPeriodo)
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -910,7 +910,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         TelaPrincipal.setVisible(false);
         
         try {
-            transacoes = new TransacaoDAO().getExtratoInicial(usuarioLogado.getConta());
+            transacoes = new ContaDAO().getExtratoInicial(usuarioLogado.getConta());
             System.out.println(transacoes);
         } catch (SQLException ex) {
             Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
@@ -1047,9 +1047,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         TelaExtratoPeriodo.setVisible(true);
     }//GEN-LAST:event_botaoExtratoPeriodoActionPerformed
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton13ActionPerformed
+    private void botaoVoltarExtratoPeriodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarExtratoPeriodoActionPerformed
+        TelaExtratoPeriodo.setVisible(false);
+        TelaExtrato.setVisible(true);
+    }//GEN-LAST:event_botaoVoltarExtratoPeriodoActionPerformed
 
     private void botaoExtratoPeriodo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExtratoPeriodo1ActionPerformed
         // TODO add your handling code here:
@@ -1082,6 +1083,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton botaoSaldo;
     private javax.swing.JButton botaoSaque;
     private javax.swing.JButton botaoTransferencias;
+    private javax.swing.JButton botaoVoltarExtratoPeriodo;
     private javax.swing.JButton botaoVoltarSaldo;
     private javax.swing.JTextField codigoPagamento;
     private javax.swing.JComboBox<String> comboAnoFinal;
@@ -1092,7 +1094,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
