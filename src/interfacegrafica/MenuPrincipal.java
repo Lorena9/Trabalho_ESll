@@ -910,7 +910,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         TelaPrincipal.setVisible(false);
         
         try {
-            transacoes = new ContaDAO().getExtratoInicial(usuarioLogado.getConta());
+            transacoes = new TransacaoDAO().getExtratoInicial(usuarioLogado.getConta());
             System.out.println(transacoes);
         } catch (SQLException ex) {
             Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);

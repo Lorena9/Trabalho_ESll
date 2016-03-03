@@ -20,17 +20,75 @@ import modelos.Transacao;
  *
  * @author Barbara
  */
-public abstract class TransacaoDAO {
+public class TransacaoDAO {
 
     private Connection conn;
+    ResultSet resultado = null;
     
 
     public TransacaoDAO() {
         conn = BancoDeDados.getInstance();
     }
     
-    public abstract void nova(Conta conta, int valor) throws SQLException ;
 
-    
+    public String getExtratoInicial(Conta conta) throws SQLException  {
+        String geraExtratoMes = "SELECT * FROM atm.transacao WHERE month(`data`) = month(now()) AND year(`data`)=year(now());";
+        PreparedStatement preparedStatement = conn.prepareStatement(geraExtratoMes);
+        resultado = preparedStatement.executeQuery();
+        
+        ArrayList<Transacao> extrato = new ArrayList<Transacao>();
+        
+        Transacao temp;
+        
+        Date dt_transacao;
+        int valor;
+        String tipo;
+        
+        while(resultado.next()){
+            dt_transacao  = resultado.getDate("data");
+            valor = resultado.getInt("valor");
+            tipo = resultado.getString("tipo");
+           
+            temp = new Transacao(dt_transacao, valor, conta);
+            
+            extrato.add(temp);
+        }
+        
+        String extratoTexto = "";
+        
+        for(int i=0; i < extrato.size(); i++){
+            extratoTexto = extratoTexto + extrato.get(i).toString() + "\n";
+        }
+        
+        return extratoTexto;
+    }
+
+    public ArrayList<Transacao> getExtrato(Conta conta, Date dt_ini, Date dt_fim) throws SQLException {
+        String geraExtrato = "SELECT * FROM transacao WHERE `data` > ? AND `data` < ?;";
+        PreparedStatement preparedStatement = conn.prepareStatement(geraExtrato);
+        preparedStatement.setDate(1, (java.sql.Date) dt_ini);
+        preparedStatement.setDate(2, (java.sql.Date) dt_fim);
+
+        resultado = preparedStatement.executeQuery();
+
+        ArrayList<Transacao> extrato = new ArrayList<Transacao>();
+
+        Transacao temp;
+
+        Date dt_transacao;
+        int valor;
+
+        while (resultado.next()) {
+
+            dt_transacao = resultado.getDate("data");
+            valor = resultado.getInt("valor");
+
+            temp = new Transacao(dt_transacao, valor, conta);
+
+            extrato.add(temp);
+        }
+
+        return extrato;
+    }
 
 }

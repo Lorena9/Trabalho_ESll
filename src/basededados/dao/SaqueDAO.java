@@ -25,7 +25,6 @@ public class SaqueDAO extends TransacaoDAO{
         super();
     }
     
-    @Override
     public void nova(Conta conta, int valor) throws SQLException  {
         String updateTableSQL = "INSERT into transacao(`data`, `tipo`, `valor`, `numconta`) VALUES(?, '?', ?, ?)";
         PreparedStatement preparedStatement = conn.prepareStatement(updateTableSQL);
