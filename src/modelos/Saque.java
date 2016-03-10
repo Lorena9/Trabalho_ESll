@@ -1,22 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modelos;
 
-import exceptions.SaldoInsuficienteException;
+import java.util.Date;
 
-/**
- *
- * @author T
- */
 public class Saque extends Transacao {
 
-    public Saque(int valor, Conta conta) {
-        super((-1) * valor, conta); // valor vira negativo pois é uma retirada de dinheiro
+    public Saque(String agencia, String conta, Date data, int valor) {
+        super(agencia, conta, data, (-1) * valor); // valor vira negativo pois é uma retirada de dinheiro
     }
-
+    
+/*
     public Conta sacar() throws SaldoInsuficienteException {
         if ((getValor() + getConta().getSaldo()) >= 0) {
             getConta().updateSaldo(getValor());
@@ -25,9 +18,14 @@ public class Saque extends Transacao {
         }
         return getConta();
     }
+    */
     
     @Override
     public String toString(){
         return "SAQUE          "+getData().toString()+ "  "+getValor();
+    }
+
+    public Conta sacar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

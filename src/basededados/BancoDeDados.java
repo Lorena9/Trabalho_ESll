@@ -11,7 +11,7 @@ public class BancoDeDados {
 
     private static final String URL = "jdbc:mysql://localhost:3306/atm";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "uff1116";
+    private static final String PASSWORD = "123456";
     private static Connection conn = null;
 
     private BancoDeDados() {

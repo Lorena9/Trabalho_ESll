@@ -5,17 +5,15 @@
  */
 package interfacegrafica;
 
-import basededados.dao.ContaDAO;
-import basededados.dao.TransacaoDAO;
+import basededados.ContaDAO;
+import java.awt.HeadlessException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelos.Atm;
 import modelos.Conta;
 import modelos.Saque;
-import modelos.Transacao;
 import modelos.Usuario;
 
 /**
@@ -908,14 +906,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void botaoExtratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExtratoActionPerformed
         TelaPrincipal.setVisible(false);
-        
+  /*      
         try {
             transacoes = new TransacaoDAO().getExtratoInicial(usuarioLogado.getConta());
             System.out.println(transacoes);
         } catch (SQLException ex) {
             Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+*/        
         TelaExtrato.setVisible(true);
         textAreaExtratoInicial.setText(transacoes);
         
@@ -939,6 +937,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoTransferenciasActionPerformed
 
     private void sacarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sacarButtonActionPerformed
+/*
         try {
             Conta nova = new Saque(Integer.parseInt(valorSaque.getText()) * 100, usuarioLogado.getConta()).sacar();
             new ContaDAO().atualizaConta(nova);
@@ -946,9 +945,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Valor sacado = " + valorSaque.getText());
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Não foi possível realizar a operação!\nTente novamente mais tarde!");
-        } catch (Exception ex) {
+        } catch (NumberFormatException | HeadlessException ex) {
             JOptionPane.showMessageDialog(null, "Saldo insuficiente!");
         }
+        */
     }//GEN-LAST:event_sacarButtonActionPerformed
 
     private void botaoSaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSaqueActionPerformed
@@ -1018,7 +1018,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         String agencia = numagencia.getText();
         String conta = numconta.getText();
         int valor = Integer.parseInt(valorDeposito.getText());
-        atm.executaDeposito(agencia, conta, valor);
+
+        if (atm.executaDeposito(agencia, conta, valor)) {
+            JOptionPane.showMessageDialog(null, "Deposito executado com sucesso! ");
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Falha ao depositar!");
+        }
     }//GEN-LAST:event_depositarButtonActionPerformed
 
     private void valorSaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorSaqueActionPerformed
@@ -1027,14 +1033,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void pagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagarActionPerformed
         String codigo = this.codigoPagamento.getText();
+/*
         try {
             Conta nova = new Saque(Integer.parseInt(this.valorPagamento.getText()) * 100, usuarioLogado.getConta()).sacar();
             new ContaDAO().atualizaConta(nova);
-        } catch (SQLException ex) {
-            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
+        } catch (SQLException | NumberFormatException ex) {
             Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
+*/
         JOptionPane.showMessageDialog(null, "Pagamento de " + this.tipoPagamento.getSelectedItem()+" efetuado!");//opçao escolhida no
     }//GEN-LAST:event_pagarActionPerformed
 

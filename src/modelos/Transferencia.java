@@ -5,15 +5,13 @@
  */
 package modelos;
 
-/**
- *
- * @author T
- */
+import java.util.Date;
+
 public class Transferencia extends Transacao {
     private String contaOrigem;
     private String contaDestino;
     
-    public Transferencia(int valor, Conta conta){
-        super(valor, conta);
+    public Transferencia(String agencia, String conta, Date data, int valor){
+        super(agencia, conta, data, valor);
     }
 }

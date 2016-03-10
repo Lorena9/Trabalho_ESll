@@ -12,17 +12,13 @@ import java.util.Date;
  * @author T
  */
 public class Transacao {
-    private Conta conta;
-    private Date data;
+    private String agencia;
+    private String conta;
+    Date data;
     private int valor; //obs: valor em centavos de real! Considerar duas casas decimais!
-    
-    public Transacao(int valor, Conta conta){
-        this.conta = conta;
-        this.valor = valor;
-        data = new Date();
-    }
-    
-    public Transacao(Date data, int valor, Conta conta){
+       
+    public Transacao(String agencia, String conta, Date data, int valor) {
+        this.agencia = agencia;
         this.conta = conta;
         this.valor = valor;
         this.data = data;
@@ -36,7 +32,7 @@ public class Transacao {
         return data;
     }
 
-    public Conta getConta() {
+    public String getConta() {
         return conta;
     }
     

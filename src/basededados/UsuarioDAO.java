@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package basededados.dao;
+package basededados;
 
-import basededados.BancoDeDados;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -18,7 +17,7 @@ import modelos.Usuario;
  */
 public class UsuarioDAO {
 
-    private Connection conn;
+    private final Connection conn;
 
     public UsuarioDAO() {
         conn = BancoDeDados.getInstance();

@@ -1,10 +1,9 @@
 
 package modelos;
 
-import exceptions.SaldoInsuficienteException;
+import basededados.ContaDAO;
 import java.util.ArrayList;
-import basededados.dao.*;
-import java.sql.SQLException;
+import java.util.Date;
 
 /**
  *
@@ -12,12 +11,15 @@ import java.sql.SQLException;
  */
 public class Conta {
    private int saldo;
-   private String numero;
-   private ArrayList<Transacao> transacoesMes;
+   private final String numero;
+   private Deposito novoDeposito;
+   private ArrayList<Transacao> transacoes;
+   ContaDAO contaDao;
    
    public Conta(String numConta, int saldo) {
        this.numero = numConta;
        this.saldo = saldo;
+       contaDao = new ContaDAO();
        
    }
    
@@ -47,11 +49,29 @@ public class Conta {
         return saldoFinal;
     }
     
+/*
     public Saque saca(int valor) throws SaldoInsuficienteException{ //valor do saque positivo
         if((saldo - valor) >= 0){
             return new Saque(valor, this);
         }else{
             throw new SaldoInsuficienteException();
         }
+    }
+*/
+
+    boolean deposita(String agencia, String conta, int valor) {
+      
+        novoDeposito = new Deposito (agencia, conta, new Date(), valor);
+        if (novoDeposito.deposita (agencia, conta, new Date(), valor, this)) {
+            saldo = saldo + valor;
+            transacoes.add(novoDeposito);
+            
+            System.out.println("Deposito executado com sucesso!");
+            System.out.println("Novo saldo: "+saldo);
+            
+            return true;
+        }
+
+        return false;
     }
 }

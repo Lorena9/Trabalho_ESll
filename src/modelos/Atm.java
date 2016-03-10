@@ -1,6 +1,6 @@
 package modelos;
 
-import basededados.dao.UsuarioDAO;
+import basededados.UsuarioDAO;
 
 /**
  *
@@ -8,22 +8,19 @@ import basededados.dao.UsuarioDAO;
  */
 public class Atm {
     private final Agencia agencia;
+    private Usuario usuarioLogado;
     private final UsuarioDAO userDAO;
-    private final Deposito deposito;
     
     public Atm(){
         agencia = new Agencia();
         userDAO = new UsuarioDAO();
-        deposito = new Deposito();
     }
     
     public boolean executaDeposito(String agencia, String conta, int valor) {
-        return deposito.deposita(agencia, conta, valor);
-        
+        return usuarioLogado.getConta().deposita(agencia, conta, valor);
     }
     
     public Usuario autenticar(String numAgencia, String numConta, String senha) {
-        Usuario usuarioLogado;
         String senhaBanco;
 
         usuarioLogado = userDAO.getUsuario (numConta, numAgencia);
