@@ -37,5 +37,9 @@ public class Atm {
     public Agencia getAgencia () {
         return agencia;
     }
+
+    public String getExtratoInicial(String agencia, String numero) {
+        return usuarioLogado.getConta().getExtratoInicial(agencia, numero);
+    }
     
 }

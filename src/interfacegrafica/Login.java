@@ -159,7 +159,7 @@ public class Login extends javax.swing.JFrame {
        Usuario usuarioLogado = atm.autenticar(agencia, conta, senha);
        if (usuarioLogado != null) {
 //             JOptionPane.showMessageDialog( null,"Acesso Permitido!");
-             new MenuPrincipal(atm, usuarioLogado).setVisible (true);
+             new MenuPrincipal(atm, agencia, usuarioLogado).setVisible (true);
              this.dispose();
          } 
          else { 

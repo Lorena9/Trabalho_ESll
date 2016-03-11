@@ -23,12 +23,13 @@ import modelos.Usuario;
 public class MenuPrincipal extends javax.swing.JFrame {
 
     Atm atm;
+    String agencia;
     Usuario usuarioLogado;
-    String transacoes;
 
-    public MenuPrincipal(Atm atm, Usuario usuarioLogado) {
+    public MenuPrincipal(Atm atm, String agencia, Usuario usuarioLogado) {
         initComponents();
         this.atm = atm;
+        this.agencia = agencia;
         this.usuarioLogado = usuarioLogado;
         mostraSaldo.setText(usuarioLogado.getConta().getSaldoString());
         nomeUsuario.setText(usuarioLogado.getNome());
@@ -67,7 +68,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         textAreaExtratoInicial = new javax.swing.JTextArea();
         jButton10 = new javax.swing.JButton();
-        botaoExtratoPeriodo = new javax.swing.JButton();
         TelaExtratoPeriodo = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -317,13 +317,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        botaoExtratoPeriodo.setText("Extrato por período");
-        botaoExtratoPeriodo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoExtratoPeriodoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout TelaExtratoLayout = new javax.swing.GroupLayout(TelaExtrato);
         TelaExtrato.setLayout(TelaExtratoLayout);
         TelaExtratoLayout.setHorizontalGroup(
@@ -332,11 +325,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(48, 48, 48)
                 .addGroup(TelaExtratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(TelaExtratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(TelaExtratoLayout.createSequentialGroup()
-                            .addComponent(jButton10)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botaoExtratoPeriodo))
+                    .addGroup(TelaExtratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton10, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(113, Short.MAX_VALUE))
         );
@@ -348,10 +338,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(TelaExtratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton10)
-                    .addComponent(botaoExtratoPeriodo))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addComponent(jButton10)
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         getContentPane().add(TelaExtrato, "card3");
@@ -906,14 +894,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void botaoExtratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExtratoActionPerformed
         TelaPrincipal.setVisible(false);
-  /*      
-        try {
-            transacoes = new TransacaoDAO().getExtratoInicial(usuarioLogado.getConta());
-            System.out.println(transacoes);
-        } catch (SQLException ex) {
-            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
-*/        
+        
+        String transacoes;
+    
+        transacoes = atm.getExtratoInicial(agencia, usuarioLogado.getConta().getNumero());
+        
         TelaExtrato.setVisible(true);
         textAreaExtratoInicial.setText(transacoes);
         
@@ -1048,11 +1033,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_valorDepositoActionPerformed
 
-    private void botaoExtratoPeriodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExtratoPeriodoActionPerformed
-        TelaExtrato.setVisible(false);
-        TelaExtratoPeriodo.setVisible(true);
-    }//GEN-LAST:event_botaoExtratoPeriodoActionPerformed
-
     private void botaoVoltarExtratoPeriodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarExtratoPeriodoActionPerformed
         TelaExtratoPeriodo.setVisible(false);
         TelaExtrato.setVisible(true);
@@ -1081,7 +1061,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton botaoCheques;
     private javax.swing.JButton botaoDeposito;
     private javax.swing.JButton botaoExtrato;
-    private javax.swing.JButton botaoExtratoPeriodo;
     private javax.swing.JButton botaoExtratoPeriodo1;
     private javax.swing.JButton botaoInvestimentos;
     private javax.swing.JButton botaoLogout;

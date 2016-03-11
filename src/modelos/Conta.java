@@ -74,4 +74,9 @@ public class Conta {
 
         return false;
     }
+
+    String getExtratoInicial(String agencia, String conta) {
+        return contaDao.getExtratoInicial(agencia, conta);
+        
+    }
 }

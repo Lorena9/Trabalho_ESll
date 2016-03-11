@@ -86,20 +86,6 @@ public class ContaTest {
     }
 
     /**
-     * Test of saca method, of class Conta.
-     */
-    @Test
-    public void testSaca() throws Exception {
-        System.out.println("saca");
-        int valor = 100;
-        Saque expResult = null;
-        Saque result = conta.saca(valor);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("Erro em saca");
-    }
-
-    /**
      * Test of deposita method, of class Conta.
      */
     @Test
@@ -111,8 +97,6 @@ public class ContaTest {
         boolean expResult = false;
         boolean result = conta.deposita(agencia, numConta, valor);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("Erro em deposita");
     }
     
     public void testDepositoAprovado() {
@@ -123,8 +107,6 @@ public class ContaTest {
         boolean expResult = true;
         boolean result = conta.deposita(agencia, numConta, valor);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("Erro em deposita");
     }
     
 }

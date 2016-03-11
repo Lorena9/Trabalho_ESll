@@ -15,7 +15,10 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import modelos.Conta;
+import modelos.Deposito;
+import modelos.Saque;
 import modelos.Transacao;
+import modelos.Transferencia;
 
 /**
  *
@@ -30,14 +33,17 @@ public class ContaDAO {
         conn = BancoDeDados.getInstance();
     }
 
-    public String getExtratoInicial(Conta conta) throws SQLException  {
-        String geraExtratoMes = "SELECT * FROM atm.transacao WHERE month(`data`) = month(now()) AND year(`data`)=year(now());";
+    public String getExtratoInicial(String agencia, String conta) {
+        String extratoTexto = "";
+        
+        try {
+        String geraExtratoMes = "SELECT * FROM atm.transacao WHERE agencia = '"+agencia+"' AND conta = '"+conta+"';";
         PreparedStatement preparedStatement = conn.prepareStatement(geraExtratoMes);
         resultado = preparedStatement.executeQuery();
         
         ArrayList<Transacao> extrato = new ArrayList<Transacao>();
         
-        Transacao temp;
+        Transacao temp = null;
         
         Date dt_transacao;
         int valor;
@@ -47,17 +53,24 @@ public class ContaDAO {
             dt_transacao  = resultado.getDate("data");
             valor = resultado.getInt("valor");
             tipo = resultado.getString("tipo");
-           
-//            temp = new Transacao(dt_transacao, valor, conta);
             
-  //          extrato.add(temp);
+            if (tipo.equals("s"))
+                temp = new Saque(agencia, conta, dt_transacao, valor);
+
+            if (tipo.equals("d"))
+                temp = new Deposito(agencia, conta, dt_transacao, valor);
+            
+            if (tipo.equals("t"))
+                temp = new Transferencia(agencia, conta, dt_transacao, valor);
+           
+            extrato.add(temp);
         }
-        
-        String extratoTexto = "";
         
         for(int i=0; i < extrato.size(); i++){
             extratoTexto = extratoTexto + extrato.get(i).toString() + "\n";
         }
+        
+        } catch (Exception e) { }
         
         return extratoTexto;
     }
@@ -76,12 +89,15 @@ public class ContaDAO {
 
         Date dt_transacao;
         int valor;
+        String tipo;
 
         while (resultado.next()) {
 
             dt_transacao = resultado.getDate("data");
             valor = resultado.getInt("valor");
-
+            tipo = resultado.getString("tipo");
+            
+  
 //            temp = new Transacao(dt_transacao, valor, conta);
 
 //            extrato.add(temp);
